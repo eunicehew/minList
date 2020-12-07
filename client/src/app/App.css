@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+  font-size: calc(10px + 2vmin);
+  margin: auto;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+input {
+  height: 40px;
+  width: 50%;
+  border: none;
+  border-bottom: 2px #101113 solid;
+  background: none;
+  font-size: 1.5rem;
+  color: #787a80;
+}
+
+input:focus {
+  outline: none;
+}
