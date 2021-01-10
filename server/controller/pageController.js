@@ -16,11 +16,7 @@ module.exports = {
   deletePage,
   deleteSheet,
   deleteList,
-  // getAll,
 };
-// async function getAll() {
-//   return await Page.findOne({ name: "Page1" });
-// }
 
 async function getPages(username) {
   return await User.findOne({ username }).populate("pages");
@@ -29,10 +25,6 @@ async function getPages(username) {
 //sheets or lists
 async function getSheets(pageId) {
   return await Page.findOne({ _id: pageId }).populate("sheets");
-  // return await Page.findOne({ _id: pageId }).populate({
-  //   path: "sheets",
-  //   populate: { path: "items", populate: { path: "subItems" } },
-  // });
 }
 
 async function getById(id) {
@@ -126,4 +118,3 @@ async function removeFromUser(username, _id) {
     { $pull: { pages: { $in: mongoose.mongo.ObjectID(_id) } } }
   );
 }
-// User.findOneAndUpdate({ username }, { $pull: { pages: { _id } } })

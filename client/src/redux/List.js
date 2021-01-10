@@ -42,10 +42,8 @@ export function getLists(sheetId) {
     dispatch({ type: LIST_REQUEST });
     pageService.getSheets(sheetId).then(
       (lists) => {
-        // console.log(lists);
         dispatch({ type: LIST_SUCCESS, lists });
         if (lists && lists.length > 0) {
-          // console.log(lists[0]._id);
           lists.map((list) => {
             return dispatch(getItems(list._id));
           });
@@ -64,7 +62,6 @@ function _getLists(sheetId) {
     dispatch({ type: LIST_REQUEST });
     pageService.getSheets(sheetId).then(
       (lists) => {
-        // console.log(lists);
         dispatch({ type: LIST_SUCCESS, lists });
       },
       (error) => {
@@ -76,12 +73,10 @@ function _getLists(sheetId) {
 }
 
 function _handleAction(apiCall, body, action) {
-  console.log(body)
   return (dispatch) => {
     dispatch({ type: LIST_REQUEST });
     apiCall(body).then(
       (lists) => {
-        // console.log(lists);
         dispatch(successAlert("Successfully " + action + " list"));
         dispatch(_getLists(body.pageId));
       },

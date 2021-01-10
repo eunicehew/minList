@@ -5,10 +5,9 @@ const userController = require("../controller/userController");
 // routes
 router.post("/authenticate", authenticate);
 router.post("/register", register);
-router.get("/", getAll);
 router.get("/current", getCurrent);
-//router.route("/:id").get(getById).put(update)
 router.get("/:id", getById);
+router.put("/:id", update);
 router.delete("/:id", _delete);
 
 module.exports = router;
@@ -31,12 +30,6 @@ function register(req, res, next) {
     .catch((err) => next(err));
 }
 
-function getAll(req, res, next) {
-  userController
-    .getAll()
-    .then((users) => res.json(users))
-    .catch((err) => next(err));
-}
 
 function getCurrent(req, res, next) {
   userController

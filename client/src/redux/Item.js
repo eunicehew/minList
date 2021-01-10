@@ -52,7 +52,6 @@ export function getItems(listId) {
     dispatch({ type: ITEM_REQUEST, listId });
     itemService.getItems(listId).then(
       (items) => {
-        // console.log(items);
         dispatch({ type: ITEM_SUCCESS, items });
       },
       (error) => {
@@ -99,12 +98,10 @@ export function moveItem(body) {
 
 
 function _handleAction(apiCall, body, action) {
-  console.log(body)
   return (dispatch) => {
     dispatch({ type: ITEM_REQUEST });
     apiCall(body).then(
-      (items) => {
-        // console.log(items);
+      () => {
         dispatch(successAlert("Successfully " + action + " item"));
         dispatch(getItems(body.listId));
       },

@@ -41,7 +41,6 @@ export function getPages() {
     dispatch({ type: PAGE_REQUEST });
     pageService.getPages().then(
       (pages) => {
-        // console.log(pages);
         dispatch({ type: PAGE_SUCCESS, pages });
       },
       (error) => {
@@ -55,8 +54,7 @@ export function getPages() {
 function _handlePageAction(apiCall, body, action) {
   return (dispatch) => {
     apiCall(body).then(
-      (pages) => {
-        // console.log(pages);
+      () => {
         dispatch(successAlert("Successfully " + action + " page"));
         dispatch(getPages());
       },

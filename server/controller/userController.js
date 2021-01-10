@@ -1,14 +1,12 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
-// const Page = require("../models/page");
 const pageController = require("./pageController");
 
 require("dotenv").config();
 
 module.exports = {
   authenticate,
-  getAll,
   getById,
   create,
   update,
@@ -24,10 +22,6 @@ async function authenticate({ username, password }) {
       token,
     };
   }
-}
-
-async function getAll() {
-  return await User.find();
 }
 
 async function getById(id) {
@@ -47,24 +41,19 @@ async function create({ username, password }) {
 
 async function update(id, userParam) {
   const user = await User.findById(id);
-
-  // validate
   if (!user) throw "User not found";
   if (
     user.username !== userParam.username &&
     (await User.findOne({ username: userParam.username }))
   ) {
-    throw 'Username "' + userParam.username + '" is already taken';
+    throw 'Username "' + userParam.username + '" already taken';
   }
 
   // hash password if it was entered
   if (userParam.password) {
     userParam.hash = bcrypt.hashSync(userParam.password, 10);
   }
-
-  // copy userParam properties to user
   Object.assign(user, userParam);
-
   await user.save();
 }
 

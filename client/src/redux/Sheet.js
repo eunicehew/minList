@@ -56,9 +56,7 @@ export function getSheets(pageId) {
     pageService.getSheets(pageId).then(
       (sheets) => {
         dispatch({ type: SHEET_INITIAL_SUCCESS, sheets });
-        // console.log(sheets);
         if (sheets && sheets.length > 0) {
-          // console.log(sheets[0]._id);
           dispatch(getLists(sheets[0]._id));
         }
       },
@@ -88,7 +86,6 @@ function _getSheets(pageId) {
   return (dispatch) => {
     pageService.getSheets(pageId).then(
       (sheets) => {
-        // console.log(sheets);
         dispatch({ type: SHEET_SUCCESS, sheets });
       },
       (error) => {
@@ -103,7 +100,7 @@ function _handleAction(apiCall, body, action) {
   return (dispatch) => {
     dispatch({ type: SHEET_REQUEST });
     apiCall(body).then(
-      (sheets) => {
+      () => {
         dispatch(successAlert("Successfully " + action + " sheet"));
       },
       (error) => {

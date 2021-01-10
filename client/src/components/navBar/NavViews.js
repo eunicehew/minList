@@ -183,30 +183,6 @@ export const LoggedInNav = ({
   );
 };
 
-// export const LoggedOutNav = ({ handleLogin, theme, toggleTheme }) => {
-//   const useStyles = makeStyles(() => ({
-//     appBarCenterHeight: {
-//       verticalAlign: "middle"
-//     },
-//     appBarRight:{
-//       marginLeft: "auto"
-//     }
-//   }))
-//   const classes = useStyles();
-
-//   return (
-//     <AppBar position="fixed">
-//       <Toolbar variant="dense">
-//         <Button variant="contained" onClick={handleLogin}>
-//           Admin Login
-//         </Button>
-//         <div className={classes.appBarRight}>
-//           <ThemeSwitch classes={classes} theme={theme} toggleTheme={toggleTheme}/> 
-//         </div>
-//       </Toolbar>
-//     </AppBar>
-//   );
-// };
 
 const ThemeSwitch = ({classes, theme, toggleTheme}) => {
   const NavSwitch = withStyles({
@@ -260,11 +236,6 @@ LoggedInNav.propTypes = {
   toggleTheme: PropTypes.func.isRequired,
 };
 
-// LoggedOutNav.propTypes = {
-//   theme: PropTypes.string.isRequired,
-//   handleLogin: PropTypes.func.isRequired,
-//   toggleTheme: PropTypes.func.isRequired,
-// };
 
 ThemeSwitch.propTypes = {
   classes: PropTypes.object.isRequired,

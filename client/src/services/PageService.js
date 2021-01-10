@@ -18,12 +18,16 @@ const requestOptions = {
 };
 
 function getPages() {
+  let username = localStorage.getItem("user");
+  let token = localStorage.getItem("token");
+
   const requestOptions = {
-    headers: { ...authHeader(), "Content-Type": "application/json" },
-  };
-  const username = localStorage.getItem("user");
+    headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
+    params: { username: username } 
+  
+  }
   return axios
-    .get(`/pages/getPages`, { params: { username: username } }, requestOptions)
+    .get(`/pages/getPages`, requestOptions)
     .then(handleResponse)
     .catch((err) => console.log(err));
 }
@@ -31,9 +35,10 @@ function getPages() {
 function getSheets(pageId) {
   const requestOptions = {
     headers: { ...authHeader(), "Content-Type": "application/json" },
+    params: { pageId: pageId }   
   };
   return axios
-    .get(`/pages/getSheets`, { params: { pageId: pageId } }, requestOptions)
+    .get(`/pages/getSheets`, requestOptions)
     .then(handleResponse)
     .catch((err) => console.log(err));
 }
@@ -41,9 +46,10 @@ function getSheets(pageId) {
 function getById(sheetId) {
   const requestOptions = {
     headers: { ...authHeader(), "Content-Type": "application/json" },
+    params: { sheetId: sheetId } 
   };
   return axios
-    .get(`/pages/`, { params: { sheetId: sheetId } }, requestOptions)
+    .get(`/pages/`, requestOptions)
     .then(handleResponse)
     .catch((err) => console.log(err));
 }

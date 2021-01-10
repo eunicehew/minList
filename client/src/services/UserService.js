@@ -5,14 +5,12 @@ export const userService = {
   login,
   register,
   logout,
-  getAll,
   getById,
   update,
   delete: _delete,
 };
 
 const requestOptions = {
-  // headers: { "Content-Type": "application/json" },
   headers: { ...authHeader(), "Content-Type": "application/json" },
 };
 
@@ -21,10 +19,8 @@ function login(username, password) {
     .post("/users/authenticate", { username, password })
     .then(handleResponse)
     .then((data) => {
-      const user = data.username;
-      const token = data.token;
-      localStorage.setItem("user", user);
-      localStorage.setItem("token", token);
+      localStorage.setItem("user", data.username);
+      localStorage.setItem("token", data.token);
       return data;
     });
 }
@@ -37,10 +33,6 @@ function register(username, password) {
 
 function logout() {
   localStorage.clear()
-}
-
-function getAll() {
-  return fetch(`/users/`, requestOptions).then(handleResponse);
 }
 
 function getById(id) {

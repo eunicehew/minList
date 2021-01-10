@@ -11,7 +11,6 @@ export const itemService = {
   moveItem,
 };
 
-
 const requestOptions = {
   headers: { ...authHeader(), "Content-Type": "application/json" },
 };
@@ -19,9 +18,10 @@ const requestOptions = {
 function getItems(listId) {
   const requestOptions = {
     headers: { ...authHeader(), "Content-Type": "application/json" },
+    params: { listId: listId }  
   };
   return axios
-    .get(`/items/getItems`, { params: { listId: listId } }, requestOptions)
+    .get(`/items/getItems`, requestOptions)
     .then(handleResponse)
     .catch((err) => console.log(err));
 }
@@ -29,9 +29,10 @@ function getItems(listId) {
 function getParentList(itemId) {
   const requestOptions = {
     headers: { ...authHeader(), "Content-Type": "application/json" },
+    params: { itemId: itemId }  
   };
   return axios
-    .get(`/items/getParentList`, { params: { itemId: itemId } }, requestOptions)
+    .get(`/items/getParentList`, requestOptions)
     .then(handleResponse)
     .catch((err) => console.log(err));
 }

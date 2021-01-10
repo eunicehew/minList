@@ -9,11 +9,6 @@ import { toggleMenu, toggleTheme } from "../../redux/UI";
 
 class NavBar extends React.Component {
 
-  // handleLogin = (e) => {
-  //   e.preventDefault();
-  //   this.props.login("tester", "pass", this.props.history);
-  // };
-
   handleRedirect = (page) => {
     this.props.history.push(`/${page.name}`);
   };
@@ -41,12 +36,6 @@ class NavBar extends React.Component {
             pathname={this.props.location.pathname}
           />
         ) : ( null
-          // <LoggedOutNav
-          //   handleLogin={this.handleLogin}
-          //   handleRedirect={this.handleRedirect}
-          //   toggleTheme={this.props.toggleTheme}
-          //   theme={this.props.theme}
-          // />
         )}
       </>
     );

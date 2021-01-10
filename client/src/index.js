@@ -9,7 +9,6 @@ import "./index.css";
 import App from "./app/App";
 
 ReactDOM.render(
-  // <React.StrictMode>
   <React.Fragment>
     <Provider store={store}>
       <PersistGate loading={<CircularProgress />} persistor={persistor}>
@@ -17,7 +16,6 @@ ReactDOM.render(
       </PersistGate>
     </Provider>
   </React.Fragment>,
-  // </React.StrictMode>,
   document.getElementById("root")
 );
 

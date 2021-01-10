@@ -12,18 +12,8 @@ router.put("/:id", update);
 router.delete("/deletesheet/:id", deleteSheet);
 router.delete("/deletePage/:id", deletePage);
 router.delete("/deleteList/:id", deleteList);
-// router.get("/getAll", getAll);
-// router.get("/current", getCurrent);
 
 module.exports = router;
-
-//does a findone of null id ???
-// function getAll(req, res, next) {
-//   pageController
-//     .getAll()
-//     .then((p) => res.json(p))
-//     .catch((err) => next(err));
-// }
 
 function getPages(req, res, next) {
   pageController
